@@ -27,6 +27,13 @@ a {
     text-decoration: none;
 }
 
+h1,
+h2,
+h3,
+h4 {
+    color: var(--blue900);
+}
+
 input[type="text"] {
     border: none;
     background: transparent;
@@ -38,4 +45,66 @@ input[type="text"] {
 
 body {
     font-family: "Inter", sans-serif;
+    color: var(--gy500);
+}
+
+/* Fonts */
+.header {
+    font-size: 4rem;
+    line-height: 110%;
+    letter-spacing: -5%;
+    font-weight: 600;
+}
+
+.header-2 {
+    font-size: 3rem;
+    line-height: 110%;
+    letter-spacing: -5%;
+    font-weight: 600;
+}
+
+.header-3 {
+    font-size: 2rem;
+    line-height: 110%;
+    letter-spacing: -5%;
+    font-weight: 600;
+}
+
+.header-4 {
+    font-size: 1.5rem;
+    line-height: 120%;
+    letter-spacing: -5%;
+    font-weight: 600;
+}
+
+.text {
+    font-size: 1rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    font-weight: 400;
+}
+
+.text-b {
+    font-size: 1rem;
+    line-height: 150%;
+    letter-spacing: 0%;
+    font-weight: 600;
+}
+
+@media(max-width:48rem) {
+
+    /* tablet */
+    .header {
+        font-size: 3rem;
+        line-height: 110%;
+        letter-spacing: -5%;
+        font-weight: 600;
+    }
+
+    .header-2 {
+        font-size: 2rem;
+        line-height: 110%;
+        letter-spacing: -5%;
+        font-weight: 600;
+    }
 }
