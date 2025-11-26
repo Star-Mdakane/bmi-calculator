@@ -441,6 +441,10 @@ input[type="radio"]:hover+label::before {
         flex-direction: column;
     }
 
+    .inputs {
+        grid-template-columns: 1fr;
+    }
+
     .your-results {
         padding: 0;
         margin: 6rem 0;
@@ -530,6 +534,10 @@ input[type="radio"]:hover+label::before {
             display: flex;
             align-items: center;
         }
+    }
+
+    .inputs {
+        grid-template-columns: 1fr 1fr;
     }
 
 
@@ -635,6 +643,10 @@ input[type="radio"]:hover+label::before {
 
     .your-results .results-content {
         grid-column: 1 / -1;
+    }
+
+    .your-results article {
+        margin: 2rem 1rem;
     }
 
     .tips {
