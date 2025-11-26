@@ -266,6 +266,10 @@ input[type="radio"]:hover+label::before {
     }
 }
 
+.input-container:hover {
+    cursor: pointer;
+}
+
 .output {
     background-color: var(--blue500);
     color: var(--white);
@@ -356,7 +360,71 @@ input[type="radio"]:hover+label::before {
     gap: 1.5rem;
 }
 
+.limitations {
+    padding: 6.5rem 8.75rem;
 
+}
+
+.limitations .wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    box-shadow: 1rem 2rem 3.5rem rgb(184, 205, 230);
+    border-radius: 1rem;
+    background-color: var(--white);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.limitations article {
+    grid-row: 1;
+    grid-column: 1 / 7;
+}
+
+.gender {
+    grid-row: 1;
+    grid-column: 8 / 12;
+}
+
+.curve-right {
+    grid-row: 2;
+    grid-column: 1 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.age {
+    grid-row: 2;
+    grid-column: 5 / 9;
+}
+
+.muscle {
+    grid-row: 2;
+    grid-column: 9 / -1;
+}
+
+.pregnancy {
+    grid-row: 3;
+    grid-column: 3 / 7;
+}
+
+.race {
+    grid-row: 3;
+    grid-column: 7 / 11;
+}
 
 
 @media(max-width:48rem) {
