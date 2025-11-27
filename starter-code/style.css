@@ -191,11 +191,13 @@ fieldset {
 input[type="radio"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 0;
-    height: 0;
+    width: 1px;
+    height: 1px;
     margin: 0;
     padding: 0;
     outline: 0;
+    position: absolute;
+    opacity: 0;
 }
 
 fieldset label {
@@ -242,12 +244,26 @@ input[type="radio"]:hover+label::before {
     border-color: var(--blue500);
 }
 
-.inputs {
+.inputs-metric {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-
 }
+
+.inputs-imperial {
+    /* display: grid; */
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.form-control-weight,
+.form-control-height {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
 
 .input-container {
     border: 1px solid var(--gy500);
@@ -331,6 +347,7 @@ input[type="radio"]:hover+label::before {
 }
 
 
+
 .tips {
     width: 100%;
     position: relative;
@@ -371,9 +388,12 @@ input[type="radio"]:hover+label::before {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 2rem;
+    margin: 0 auto;
 }
 
 .card {
+    width: auto;
+    min-width: 0;
     box-shadow: 1rem 2rem 3.5rem rgb(184, 205, 230);
     border-radius: 1rem;
     background-color: var(--white);
@@ -435,6 +455,11 @@ input[type="radio"]:hover+label::before {
 
     div[class^='curve'] {
         display: none;
+    }
+
+    .results-content {
+        display: flex;
+        align-items: center;
     }
 
     .bmi-output {
@@ -660,9 +685,11 @@ input[type="radio"]:hover+label::before {
 
     .limitations {
         padding: 0;
-        margin: 3rem 1rem;
+        margin-bottom: 5rem;
 
-        ga & h2 {
+
+        & h2,
+        p {
             text-align: center;
         }
     }
@@ -670,7 +697,14 @@ input[type="radio"]:hover+label::before {
     .limitations .wrapper {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        gap: 2rem;
+        width: fit-content;
+        gap: 1rem;
+        padding: 0 0.5rem;
+        justify-content: center;
+    }
+
+    .limitations article {
+        margin-bottom: 3.5rem;
     }
 
 
@@ -692,34 +726,28 @@ input[type="radio"]:hover+label::before {
         }
     }
 
-
     .gender {
         grid-row: 2;
-
         grid-column: 1 / -1;
     }
 
     .age {
         grid-row: 3;
-
         grid-column: 1 / -1;
     }
 
     .muscle {
         grid-row: 4;
-
         grid-column: 1 / -1;
     }
 
     .pregnancy {
         grid-row: 5;
-
         grid-column: 1 / -1;
     }
 
     .race {
         grid-row: 6;
-
         grid-column: 1 / -1;
     }
 
