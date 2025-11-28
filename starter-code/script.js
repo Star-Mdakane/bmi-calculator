@@ -9,8 +9,8 @@ const stones = document.querySelector(".stones");
 const pounds = document.querySelector(".pounds");
 const metricInputs = document.querySelectorAll(".inputs-metric input");
 const imperialInputs = document.querySelectorAll(".inputs-imperial input");
-const metricForm = document.querySelectorAll(".inputs-metric");
-const imperialForm = document.querySelectorAll(".inputs-imperial");
+const metricForm = document.querySelector(".inputs-metric");
+const imperialForm = document.querySelector(".inputs-imperial");
 
 const metricBmi = (weightK, heightC) => {
     const height = (heightC / 100) ** 2;
@@ -27,52 +27,52 @@ const imperialBmi = (weightS = 1, weightP, heightF = 1, heightI) => {
 }
 
 
-metricForm.forEach(form => {
-    form.addEventListener("input", (e) => {
-        e.preventDefault();
 
-        let isValid = true;
+metricForm.addEventListener("input", (e) => {
+    e.preventDefault();
 
-        form.querySelectorAll("input").forEach(input => {
-            if (isNaN(input.value) || input.value === "") {
-                isValid = false;
-            }
-        })
+    let isValid = true;
 
-        if (isValid) {
-            const height = Number(form.querySelector("#heightCm").value);
-            const weight = Number(form.querySelector("#weightKg").value);
-            const bmi = metricBmi(weight, height);
-            console.log(height)
-            console.log(weight)
-            console.log(bmi)
+    metricForm.querySelectorAll("input").forEach(input => {
+        if (isNaN(input.value) || input.value === "") {
+            isValid = false;
         }
     })
+
+    if (isValid) {
+        const height = Number(metricForm.querySelector("#heightCm").value);
+        const weight = Number(metricForm.querySelector("#weightKg").value);
+        const bmi = metricBmi(weight, height);
+        console.log(height)
+        console.log(weight)
+        console.log(bmi)
+    }
 })
 
 
-imperialForm.forEach(form => {
-    form.addEventListener("input", (e) => {
-        e.preventDefault();
 
-        let isValid = true;
 
-        form.querySelectorAll("input").forEach(input => {
-            if (isNaN(input.value || input.value === '')) {
-                isValid = false;
-            }
-        })
+imperialForm.addEventListener("input", (e) => {
+    e.preventDefault();
 
-        if (isValid) {
-            const heightF = Number(form.querySelector("#heightFt").value);
-            const heightI = Number(form.querySelector("#heightIn").value);
-            const weightS = Number(form.querySelector("#weightSt").value);
-            const weightP = Number(form.querySelector("#weightLbs").value);
-            const bmi = imperialBmi(weightS, weightP, heightF, heightI);
-            console.log(bmi)
+    let isValid = true;
+
+    imperialForm.querySelectorAll("input").forEach(input => {
+        if (isNaN(input.value || input.value === '')) {
+            isValid = false;
         }
     })
+
+    if (isValid) {
+        const heightF = Number(imperialForm.querySelector("#heightFt").value);
+        const heightI = Number(imperialForm.querySelector("#heightIn").value);
+        const weightS = Number(imperialForm.querySelector("#weightSt").value);
+        const weightP = Number(imperialForm.querySelector("#weightLbs").value);
+        const bmi = imperialBmi(weightS, weightP, heightF, heightI);
+        console.log(bmi)
+    }
 })
+
 
 
 system.forEach(button => {
