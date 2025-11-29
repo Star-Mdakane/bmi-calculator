@@ -88,7 +88,7 @@ metricForm.addEventListener("input", (e) => {
     let isValid = true;
 
     metricForm.querySelectorAll("input").forEach(input => {
-        if (input.value.trim() === "") {
+        if (input.value.trim() === "" || input.value == 0) {
             isValid = false;
         } else if (isNaN(input.value)) {
             isValid = false;
@@ -123,7 +123,7 @@ imperialForm.addEventListener("input", (e) => {
     let isValid = true;
 
     imperialForm.querySelectorAll("input").forEach(input => {
-        if (input.value.trim() === "") {
+        if (input.value.trim() === "" || input.value == 0) {
             isValid = false;
         } else if (isNaN(input.value)) {
             isValid = false;
