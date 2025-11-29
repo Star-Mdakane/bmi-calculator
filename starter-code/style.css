@@ -639,6 +639,10 @@ input[type="radio"]:hover+label::before {
         grid-template-columns: 1fr;
     }
 
+    .inputs-metric {
+        grid-template-columns: 1fr;
+    }
+
     .output {
         border-radius: 1rem;
     }

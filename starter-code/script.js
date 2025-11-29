@@ -11,6 +11,9 @@ const metricInputs = document.querySelectorAll(".inputs-metric input");
 const imperialInputs = document.querySelectorAll(".inputs-imperial input");
 const metricForm = document.querySelector(".inputs-metric");
 const imperialForm = document.querySelector(".inputs-imperial");
+const bmiValue = document.querySelector("#bmi");
+const bmiText = document.querySelector(".score-message");
+const scoreMessage = document.querySelector(".bmi-output");
 
 const metricBmi = (weightK, heightC) => {
     const height = (heightC / 100) ** 2;
@@ -81,40 +84,58 @@ const updateBmiClassifications = (range, height, unitSystem, heightUnit) => {
 
 
 metricForm.addEventListener("input", (e) => {
-    e.preventDefault();
 
     let isValid = true;
 
     metricForm.querySelectorAll("input").forEach(input => {
-        if (isNaN(input.value) || input.value === "") {
+        if (input.value.trim() === "") {
+            isValid = false;
+        } else if (isNaN(input.value)) {
             isValid = false;
         }
     })
 
     if (isValid) {
+        if (isMetric) {
+            empty.style.display = 'none';
+            scoreMessage.style.display = 'flex';
+        }
         const height = Number(metricForm.querySelector("#heightCm").value);
         const weight = Number(metricForm.querySelector("#weightKg").value);
         const bmi = metricBmi(weight, height);
         console.log(height)
         console.log(weight)
         console.log(bmi)
+        bmiValue.textContent = bmi.toFixed(2);
+        bmiText.innerHTML = updateBmiClassifications(bmi, height, "metric", 'cm')
 
         console.log(updateBmiClassifications(bmi, height, "metric", 'cm'))
+    } else {
+        if (isMetric) {
+            scoreMessage.style.display = 'none';
+            empty.style.display = 'flex';
+        }
     }
 })
 
 imperialForm.addEventListener("input", (e) => {
-    e.preventDefault();
 
     let isValid = true;
 
     imperialForm.querySelectorAll("input").forEach(input => {
-        if (isNaN(input.value || input.value === '')) {
+        if (input.value.trim() === "") {
+            isValid = false;
+        } else if (isNaN(input.value)) {
             isValid = false;
         }
     })
 
     if (isValid) {
+        if (!isMetric) {
+            empty.style.display = 'none';
+            scoreMessage.style.display = 'flex';
+        }
+
         const heightF = Number(imperialForm.querySelector("#heightFt").value);
         const heightI = Number(imperialForm.querySelector("#heightIn").value);
         const weightS = Number(imperialForm.querySelector("#weightSt").value);
@@ -122,12 +143,18 @@ imperialForm.addEventListener("input", (e) => {
         const bmi = imperialBmi(weightS, weightP, heightF, heightI);
         const totalHeightInInches = (heightF * 12) + heightI;
         console.log(bmi)
+        bmiValue.textContent = bmi.toFixed(2);
+        bmiText.innerHTML = updateBmiClassifications(bmi, totalHeightInInches, "imperial", 'in')
         console.log(updateBmiClassifications(bmi, totalHeightInInches, "imperial", 'in'))
-
+    } else {
+        if (!isMetric) {
+            scoreMessage.style.display = 'none';
+            empty.style.display = 'flex';
+        }
     }
 })
 
-
+let isMetric = true;
 
 system.forEach(button => {
     button.addEventListener("change", () => {
@@ -135,13 +162,11 @@ system.forEach(button => {
             if (button.value === "metric") {
                 metric.style.display = "grid";
                 imperial.style.display = "none";
-                console.log("metric")
-
+                isMetric = true;
             } else if (button.value === "imperial") {
                 imperial.style.display = "grid";
                 metric.style.display = "none";
-                console.log("imperial")
-
+                isMetric = false;
             }
         }
     })
